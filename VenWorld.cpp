@@ -1,12 +1,48 @@
-﻿// VenWorld.cpp : Defines the entry point for the application.
-//
+﻿#include "VenWorld.h"
 
-#include "VenWorld.h"
-
-using namespace std;
-
-int main()
+int main(void)
 {
-	cout << "Hello CMake." << endl;
-	return 0;
+    GLFWwindow* window;
+
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
+	
+	if (!gladLoadGL())
+	{
+		std::cout << "ERROR! —— Can`t load GLAD!" << std::endl;
+		return -1;
+	}
+	
+	std::cout << "OpenGL ver." << GLVersion.major << "." << GLVersion.minor << std::endl;
+	
+	
+	glClearColor(0,1,0,1);
+
+    /* Loop until the user closes the window */
+    while (!glfwWindowShouldClose(window))
+    {
+        /* Render here */
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        /* Swap front and back buffers */
+        glfwSwapBuffers(window);
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+    return 0;
 }
