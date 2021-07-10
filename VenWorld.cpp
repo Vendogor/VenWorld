@@ -1,5 +1,17 @@
 ﻿#include "VenWorld.h"
 
+GLfloat point[] = {
+     0.0f,  0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+    -0.5f, -0.5f, 0.0f
+};
+
+GLfloat colors[] = {
+    1.0f, 0.0f, 0.0f,
+    0.0f, 1.0f, 0.0f,
+    0.0f, 0.0f, 1.0f
+};
+
 int g_winSizeX = 640;
 int g_winSizeY = 480;
 
